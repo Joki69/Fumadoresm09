@@ -8,7 +8,7 @@ public class Fumador extends Thread{
 
     public Fumador(String name, Mesa mesaDelFumar,int material){
         super(name);
-        material=material;
+        this.material=material;
 
         this.mesaDelFumar=mesaDelFumar;
     }
@@ -20,20 +20,20 @@ public class Fumador extends Thread{
     public void run(){
         for(;;) {
             //pilla los materiales para el crafteo
-                System.out.println(getName() + " se lia uno");
-                mesaDelFumar.hacerseUnCigarro();
 
+
+                mesaDelFumar.hacerseUnCigarro(material,getName());
                 //se lo lia
                 try {
-                    Thread.sleep((long) Math.random() * 2000);
+                    Thread.sleep(2000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                System.out.println(getName() + " se lo fuma");
+                System.out.println(getName() + " se lo fuma agustisimo");
 
                 //se lo fuma
                 try {
-                    Thread.sleep((long) Math.random() * 4000);
+                    Thread.sleep(4000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

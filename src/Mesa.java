@@ -16,21 +16,22 @@ public class Mesa {
         mesaVacía = true;
     }
 
-    public synchronized void hacerseUnCigarro()  {
+    public synchronized void hacerseUnCigarro(int material,String nameFumador)  {
         try {
-            while(mesaVacía) wait();
+            while(mesaVacía || material!=combinacionIngredientes) wait();
             mesaVacía = true;
-            System.out.println("No hay ingredientes en la mesa");
+            System.out.println(nameFumador + " se lia uno y vacía la mesa");
             notifyAll();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
-    public synchronized void ponerIngredientes(int ingredientesRandom) {
+    public synchronized void ponerIngredientes(int ingredientesRandom,String name) {
         try {
             while(!mesaVacía) wait();
             mesaVacía = false;
             this.combinacionIngredientes = ingredientesRandom;
+            System.out.println(name + " ha puesto los ingredientes");
             combinaciónEnMesa(combinacionIngredientes);
             notifyAll();
 

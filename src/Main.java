@@ -10,6 +10,7 @@ public class Main {
                 omar.getName() + " solo tiene tabaco\n" +
                 juan.getName() + " solo tiene papel");
 
+
         joki.start();
         omar.start();
         juan.start();
